@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 var prerender = require('./lib');
 
-var server = prerender();
+//var server = prerender();
+var server = prerender({
+  chromeFlags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars'],
+  chromeLocation: '/usr/bin/google-chrome'
+});
 
 server.use(prerender.sendPrerenderHeader());
 // server.use(prerender.blockResources());
